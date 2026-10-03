@@ -2,41 +2,50 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= esc($title) ?></title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>User Accounts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="bg-light">
-    <div class="container mt-5">
-        <h2 class="mb-4">User Accounts</h2>
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped">
-                <thead class="table-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Username</th>
-                        <th>Full Name</th>
-                        <th>Created At</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php if (!empty($users) && is_array($users)): ?>
-                        <?php foreach ($users as $user): ?>
-                            <tr>
-                                <td><?= esc($user['id']) ?></td>
-                                <td><?= esc($user['username']) ?></td>
-                                <td><?= esc($user['full_name']) ?></td>
-                                <td><?= esc($user['created_at']) ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <tr>
-                            <td colspan="4" class="text-center">No user records found.</td>
-                        </tr>
-                    <?php endif; ?>
-                </tbody>
-            </table>
-        </div>
+<body class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>User Accounts</h2>
+        <a href="/users/new" class="btn btn-primary">+ Add User</a>
     </div>
+
+    <?php if (session()->getFlashdata('message')): ?>
+        <div class="alert alert-success"><?= session()->getFlashdata('message') ?></div>
+    <?php endif; ?>
+
+    <table class="table table-bordered align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>Avatar</th>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Full Name</th>
+                <th>Created At</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($users as $user): ?>
+                <tr>
+                    <td class="text-center" style="width: 70px;">
+                        <?php if (!empty($user['avatar']) && file_exists(FCPATH . 'uploads/avatars/' . $user['avatar'])): ?>
+                            <img src="/uploads/avatars/<?= $user['avatar'] ?>" alt="Avatar" class="rounded-circle" width="45" height="45" style="object-fit: cover;">
+                        <?php else: ?>
+                            <img src="https://via.placeholder.com/45?text=User" alt="Placeholder" class="rounded-circle" width="45" height="45">
+                        <?php endif; ?>
+                    </td>
+                    <td><?= $user['id'] ?></td>
+                    <td><?= esc($user['username']) ?></td>
+                    <td><?= esc($user['full_name']) ?></td>
+                    <td><?= $user['created_at'] ?></td>
+                    <td>
+                        <a href="/users/edit/<?= $user['id'] ?>" class="btn btn-sm btn-warning">Edit</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 </body>
 </html>

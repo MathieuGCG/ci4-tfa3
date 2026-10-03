@@ -1,4 +1,4 @@
-# CodeIgniter 4 - Customer & User Management System (TFA2)
+# CodeIgniter 4 - MAKING IT EDITABLE: FORMS, VALIDATION, AND FILE UPLOAD(TFA3)
 
 ## Project Description
 This application is a Web-based Information System developed using CodeIgniter 4 framework and MySQL database. It retrieves and displays records from the `customers` and `users` tables, styled using Bootstrap 5.

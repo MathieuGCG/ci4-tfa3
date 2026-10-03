@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2026 at 06:42 PM
+-- Generation Time: Oct 03, 2026 at 10:45 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,7 +44,8 @@ INSERT INTO `customers` (`id`, `full_name`, `email`, `phone`, `created_at`) VALU
 (2, 'Maria Clara', 'maria.clara@example.com', '09182345678', '2026-10-03 00:27:04'),
 (3, 'Jose Rizal', 'jose.rizal@example.com', '09193456789', '2026-10-03 00:27:04'),
 (4, 'Andres Bonifacio', 'andres.b@example.com', '09204567890', '2026-10-03 00:27:04'),
-(5, 'Apolinario Mabini', 'apolinario.m@example.com', '09215678901', '2026-10-03 00:27:04');
+(5, 'Apolinario Mabini', 'apolinario.m@example.com', '09215678901', '2026-10-03 00:27:04'),
+(6, 'MATHIEU GUNDRAN', 'mcgundran1@fit.edu.ph', '09154593897', '2026-10-03 08:39:42');
 
 -- --------------------------------------------------------
 
@@ -56,6 +57,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `full_name` varchar(100) NOT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -63,12 +65,13 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `full_name`, `created_at`) VALUES
-(1, 'admin_juan', 'Juan Dela Cruz', '2026-10-03 00:27:04'),
-(2, 'mclara_cashier', 'Maria Clara', '2026-10-03 00:27:04'),
-(3, 'jrizal_mgr', 'Jose Rizal', '2026-10-03 00:27:04'),
-(4, 'abonifacio_staff', 'Andres Bonifacio', '2026-10-03 00:27:04'),
-(5, 'amabini_tech', 'Apolinario Mabini', '2026-10-03 00:27:04');
+INSERT INTO `users` (`id`, `username`, `full_name`, `avatar`, `created_at`) VALUES
+(1, 'admin_juan', 'Juan Dela Cruz', NULL, '2026-10-03 00:27:04'),
+(2, 'mclara_cashier', 'Maria Clara', NULL, '2026-10-03 00:27:04'),
+(3, 'jrizal_mgr', 'Jose Rizal', NULL, '2026-10-03 00:27:04'),
+(4, 'abonifacio_staff', 'Andres Bonifacio', NULL, '2026-10-03 00:27:04'),
+(5, 'amabini_tech', 'Apolinario Mabini', NULL, '2026-10-03 00:27:04'),
+(6, 'Korilakkuma', 'Roseann Godilo', '1791017036_f440e27a27576fffcef1.jpg', '2026-10-03 08:43:56');
 
 --
 -- Indexes for dumped tables
@@ -95,13 +98,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
